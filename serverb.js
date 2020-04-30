@@ -24,7 +24,7 @@ const
 	bodyParser  = require('body-parser'),
 	chaPort        = process.env.PORT || 3011,
 	chaAvatar = '1-81-02.svg',
-  ipaddress = '127.0.0.1';
+  ipaddress = '0.0.0.0';
 
 
 
