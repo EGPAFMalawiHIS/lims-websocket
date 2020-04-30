@@ -38,6 +38,7 @@ var JWT_SECRET = '';
 app.use(helmet());
 app.use(cors());
 app.use(express.static('www'));
+io.set('origins', '*:*');
 
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -61,15 +62,22 @@ io.on('connection', socket => {
 	// for now, all users are your contacts
 	socket.on('orders', data => {
 		
-		console.log('let see',data);
+		console.log('emitted on orders Channel:',data);
     socket.broadcast.emit('orders',data);
 
 	});
 
   socket.on('results', data => {
     
-    console.log('let see',data);
-    socketbroadcast.emit('results',data);
+    console.log('emitted on results Channel:',data);
+    socket.broadcast.emit('results',data);
+
+  });
+
+  socket.on('dashboard', data => {
+    
+    console.log('emitted on dashboard Channel:',data);
+    socket.broadcast.emit('dashboard',data);
 
   });
 
